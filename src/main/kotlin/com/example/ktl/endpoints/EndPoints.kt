@@ -1,6 +1,5 @@
 package com.example.ktl.endpoints
 
-import com.example.ktl.entity.Situacao
 import com.example.ktl.repository.SituacaoRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
@@ -14,7 +13,20 @@ class EndPoints {
     @Autowired
     private val situacaoRepository: SituacaoRepository? = null
 
-   val situacao: List<Situacao>
-        @GetMapping(value = ["/situacao"])
-        get() = situacaoRepository!!.findAll()
+    @GetMapping(value = ["/hello"])
+    fun hello() = "hello!".also {
+        situacaoRepository!!.findAll().forEach {
+            println("situacaoId:${it.id}")
+            println()
+        }
+    }
+
+    @GetMapping(value = ["/hello2"])
+    fun hello2() = "hello!".also {
+        situacaoRepository!!.findAll().forEach {
+            println("situacaoId:${it.id}")
+            println("tipoSituacaoDescricao:${it.tipoSituacao?.descricao}")
+            println()
+        }
+    }
 }

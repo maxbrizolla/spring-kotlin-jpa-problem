@@ -8,11 +8,11 @@ import javax.persistence.Table
 
 @Entity
 @Table(name = "TIPOSITUACAO")
-data class TipoSituacao (
-    @Id
-    @Column(name = "ID")
-    val id: Long? = null,
+open class TipoSituacao(
+        @Id
+        @Column(name = "ID")
+        open val id: Long? = null,
 
-    @Column(name = "DESCRICAO")
-    val descricao: String? = null
+        @Column(name = "DESCRICAO")
+        open val descricao: String? = null
 )
